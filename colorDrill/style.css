@@ -10,7 +10,7 @@ h1 {
 /*cubes are 30% of the container 30% , margins are 1.6% each */
 .cube {
 	width: 30%;
-	background: orange;
+	background: orange; /*replaced by colorArr styleing in js*/
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.66%;

@@ -1,0 +1,24 @@
+
+/*dark charcoal*/
+body {
+	background-color: #232323;
+}
+h1 {
+	color: white;
+}
+/*grid based on 6 divs within another div conatiner*/
+/*cubes are 30% of the container 30% , margins are 1.6% each */
+.cube {
+	width: 30%;
+	background: orange;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+
+}
+
+/*set margin for top to zero, remaining to auto (which automatically centers)*/
+.divContainer {
+	margin: 0 auto;
+	max-width: 60%;
+}

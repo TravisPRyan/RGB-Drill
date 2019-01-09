@@ -1,8 +1,10 @@
 
 /*dark charcoal*/
 body {
-	background-color: #232323;
+	background-color: #383636;
 }
+
+/*should replace this with coloring span */
 h1 {
 	color: white;
 }
@@ -21,4 +23,9 @@ h1 {
 .divContainer {
 	margin: 0 auto;
 	max-width: 60%;
+}
+
+/*should replace this with coloring span */
+#displayMSG {
+	color: white;
 }

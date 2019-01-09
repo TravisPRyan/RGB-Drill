@@ -1,5 +1,5 @@
+/*id=# class=.*/
 
-/*dark charcoal*/
 body {
 	background-color: #383636;
 }
@@ -27,5 +27,11 @@ h1 {
 
 /*should replace this with coloring span */
 #displayMSG {
-	color: white;
+	color: black;
+}
+
+#alertBar {
+	background-color: white;
+	height: 30px;
+	text-align: center;
 }

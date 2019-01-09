@@ -12,6 +12,24 @@ var colorSelect = document.querySelector("#colorSel");
 //display span - for correct incorrect (replaces alert)
 var msgDisplay = document.querySelector('#displayMSG');
 var h1 = document.querySelector("h1");
+var reseedBut = document.querySelector("#reseedBut");
+
+
+reseedBut.addEventListener("click", function(){
+	//generate new colors
+	colorsArr = genRando(6);
+	//pick a new rando from ^^
+	initialSel = randoColor();
+	//change selection to new seeds
+	colorSelect.textContent = initialSel;
+	//associate new colors to cubes
+	for (var i =0; i < cubes.length; i++ ){
+		cubes[i].style.backgroundColor = colorsArr[i];
+	}
+	//returns header styling to original after press
+	h1.style.backgroundColor = "#383636";
+
+});
 
 colorSelect.textContent = initialSel;
 //loop through arrays of divs (cubes) adding intial color values and click listeners
@@ -25,6 +43,7 @@ for(var i = 0; i < cubes.length; i++){
 		clickedCube = this.style.backgroundColor;
 		if(clickedCube === initialSel){
 			msgDisplay.textContent = 'Congratulations, you are Correct!';
+			reseedBut.textContent = "New Game";
 			colorChange(clickedCube);
 			h1.style.backgroundColor = clickedCube;
 			

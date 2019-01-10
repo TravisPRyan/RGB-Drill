@@ -13,6 +13,31 @@ var colorSelect = document.querySelector("#colorSel");
 var msgDisplay = document.querySelector('#displayMSG');
 var h1 = document.querySelector("h1");
 var reseedBut = document.querySelector("#reseedBut");
+var easyBut = document.querySelector("#easyBut");
+var hardBut = document.querySelector("#hardBut");
+
+
+
+//toggles styling for easy/hard mode
+easyBut.addEventListener("click", function(){
+	easyBut.classList.add("modeSel");
+	hardBut.classList.remove("modeSel");
+	colorsArr = genRando(3);
+	initialSel = randoColor();
+	colorSelect.textContent = initialSel;
+	for(var i = 0; i < cubes.length; i++){
+		if(colorsArr[i]){
+			cubes[i].style.backgroundColor = colorsArr[i];
+		} else {
+			cubes[i].style.display = "none";
+		}
+	}
+});
+
+hardBut.addEventListener("click", function(){
+	hardBut.classList.add("modeSel");
+	easyBut.classList.remove("modeSel");
+});
 
 
 reseedBut.addEventListener("click", function(){

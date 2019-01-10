@@ -1,5 +1,5 @@
 // alert("connected");
-var numberOfCubes = 6;
+var numberOfCubes = 9;
 //color array - will become random eventually
 var colorsArr = genRando(numberOfCubes);
 //incorporates all cube class divs from document into one var
@@ -22,7 +22,7 @@ var hardBut = document.querySelector("#hardBut");
 easyBut.addEventListener("click", function(){
 	easyBut.classList.add("modeSel");
 	hardBut.classList.remove("modeSel");
-	numberOfCubes = 3;
+	numberOfCubes = 6;
 	colorsArr = genRando(numberOfCubes);
 	initialSel = randoColor();
 	colorSelect.textContent = initialSel;
@@ -38,11 +38,11 @@ easyBut.addEventListener("click", function(){
 hardBut.addEventListener("click", function(){
 	hardBut.classList.add("modeSel");
 	easyBut.classList.remove("modeSel");
-	numberOfCubes = 6;
+	numberOfCubes = 9;
 	colorsArr = genRando(numberOfCubes);
 	initialSel = randoColor();
 	colorSelect.textContent = initialSel;
-	for(var i = 0; i < cubes.length; i++){
+	for(var i = 6; i < cubes.length; i++){
 		cubes[i].style.backgroundColor = colorsArr[i];
 		cubes[i].style.display = "cube";
 		}

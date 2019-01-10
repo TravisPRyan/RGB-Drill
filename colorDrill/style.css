@@ -35,3 +35,8 @@ h1 {
 	height: 30px;
 	text-align: center;
 }
+
+/*on/off class for button styling easy/hard toggle*/
+.modeSel {
+	background: blue;
+}

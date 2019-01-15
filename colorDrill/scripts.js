@@ -1,8 +1,7 @@
 // alert("connected");
-
+var numberOfCubes = 9;
 //color array - will become random eventually
-var colorsArr = genRando(6);
-
+var colorsArr = genRando(numberOfCubes);
 //incorporates all cube class divs from document into one var
 var cubes = document.querySelectorAll(".cube");
 //setting up initial value for color to be used as target
@@ -18,11 +17,13 @@ var hardBut = document.querySelector("#hardBut");
 
 
 
-//toggles styling for easy/hard mode
+
+//toggles styling for easy mode
 easyBut.addEventListener("click", function(){
 	easyBut.classList.add("modeSel");
 	hardBut.classList.remove("modeSel");
-	colorsArr = genRando(3);
+	numberOfCubes = 6;
+	colorsArr = genRando(numberOfCubes);
 	initialSel = randoColor();
 	colorSelect.textContent = initialSel;
 	for(var i = 0; i < cubes.length; i++){
@@ -33,16 +34,24 @@ easyBut.addEventListener("click", function(){
 		}
 	}
 });
-
+//toggles styling for hard mode
 hardBut.addEventListener("click", function(){
 	hardBut.classList.add("modeSel");
 	easyBut.classList.remove("modeSel");
+	numberOfCubes = 9;
+	colorsArr = genRando(numberOfCubes);
+	initialSel = randoColor();
+	colorSelect.textContent = initialSel;
+	for(var i = 6; i < cubes.length; i++){
+		cubes[i].style.backgroundColor = colorsArr[i];
+		cubes[i].style.display = "cube";
+		}
 });
 
 
 reseedBut.addEventListener("click", function(){
 	//generate new colors
-	colorsArr = genRando(6);
+	colorsArr = genRando(numberOfCubes);
 	//pick a new rando from ^^
 	initialSel = randoColor();
 	//change selection to new seeds

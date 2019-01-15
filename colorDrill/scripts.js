@@ -1,97 +1,93 @@
-// alert("connected");
 var numberOfCubes = 9;
-//color array - will become random eventually
-var colorsArr = genRando(numberOfCubes);
-//incorporates all cube class divs from document into one var
+var colorsArr = [];
+var initialSel;
 var cubes = document.querySelectorAll(".cube");
-//setting up initial value for color to be used as target
-var initialSel = randoColor();
-//tageted through span id (not class) colorSel
 var colorSelect = document.querySelector("#colorSel");
-//display span - for correct incorrect (replaces alert)
 var msgDisplay = document.querySelector('#displayMSG');
 var h1 = document.querySelector("h1");
 var reseedBut = document.querySelector("#reseedBut");
-var easyBut = document.querySelector("#easyBut");
-var hardBut = document.querySelector("#hardBut");
+var difButtons = document.querySelectorAll(".difficulty");
 
+init();
 
+function init(){
+	//difficulty event listeners
+	difficultySetUp();
+	//cube event listeners
+	cubeSetUp();
+	
+	reseed();
+}
 
-
-//toggles styling for easy mode
-easyBut.addEventListener("click", function(){
-	easyBut.classList.add("modeSel");
-	hardBut.classList.remove("modeSel");
-	numberOfCubes = 6;
-	colorsArr = genRando(numberOfCubes);
-	initialSel = randoColor();
-	colorSelect.textContent = initialSel;
-	for(var i = 0; i < cubes.length; i++){
-		if(colorsArr[i]){
-			cubes[i].style.backgroundColor = colorsArr[i];
-		} else {
-			cubes[i].style.display = "none";
-		}
-	}
-});
-//toggles styling for hard mode
-hardBut.addEventListener("click", function(){
-	hardBut.classList.add("modeSel");
-	easyBut.classList.remove("modeSel");
-	location.reload(true);
-	numberOfCubes = 9;
-	colorsArr = genRando(numberOfCubes);
-	initialSel = randoColor();
-	colorSelect.textContent = initialSel;
-	for(var i = 6; i < cubes.length; i++){
-		cubes[i].style.backgroundColor = colorsArr[i];
-		cubes[i].style.display = "cube";
-		}
-});
-
-
-reseedBut.addEventListener("click", function(){
-	//generate new colors
+//generate/assign random colors depending on the number of cubes
+function reseed(){
 	colorsArr = genRando(numberOfCubes);
 	//pick a new rando from ^^
 	initialSel = randoColor();
 	//change selection to new seeds
 	colorSelect.textContent = initialSel;
-	this.textContent = "Reseed Colors"
+	reseedBut.textContent = "Reseed Colors"
 	msgDisplay.textContent = "";
 	//associate new colors to cubes
-	for (var i =0; i < cubes.length; i++ ){
-		cubes[i].style.backgroundColor = colorsArr[i];
+	for(var i =0; i < cubes.length; i++ ){
+		if(colorsArr[i]){
+			cubes[i].style.display = "cube";
+			cubes[i].style.backgroundColor = colorsArr[i];
+		} else{
+			cubes[i].style.display = "none";
+		}
+		
 	}
 	//returns header styling to original after press
 	h1.style.backgroundColor = "rgb(226, 113, 60)";
 
+}
+
+
+reseedBut.addEventListener("click", function(){
+	reseed();
 });
 
-colorSelect.textContent = initialSel;
-//loop through arrays of divs (cubes) adding intial color values and click listeners
-for(var i = 0; i < cubes.length; i++){
-	//add initial colors to cubes
-	cubes[i].style.backgroundColor = colorsArr[i];
-	//add click listeners to cubes
-	cubes[i].addEventListener('click', function(){
-		//identify color of clicked cube and compare it to initialSel
-		//fading for incorrect choices and recoloring all cubes for correct choice
-		clickedCube = this.style.backgroundColor;
-		if(clickedCube === initialSel){
-			msgDisplay.textContent = 'Congratulations!';
-			reseedBut.textContent = "New Game";
-			colorChange(clickedCube);
-			h1.style.backgroundColor = clickedCube;
-			
-		} else{
-			this.style.background = "#383636";
-			//new reporting for inc
-			msgDisplay.textContent = 'Sorry, Try Again.';
-		}
+function difficultySetUp(){
+	//difficulty buttons event listener
+	for(var i =0; i < difButtons.length; i++ ){
+		difButtons[i].addEventListener("click", function(){
+			difButtons[0].classList.remove("modeSel");
+			difButtons[1].classList.remove("modeSel");
+			this.classList.add("modeSel");
+			//ternary operator instead of if/else (more concise)
+			this.textContent === "Easy" ? numberOfCubes = 6: numberOfCubes = 9;
 
-	});
+			reseed();
+		});
+	}
 }
+
+function cubeSetUp(){
+	//loop through arrays of divs (cubes) adding intial color values and click listeners
+	for(var i = 0; i < cubes.length; i++){
+		//add click listeners to cubes
+		cubes[i].addEventListener('click', function(){
+			//identify color of clicked cube and compare it to initialSel
+			//fading for incorrect choices and recoloring all cubes for correct choice
+			var clickedCube = this.style.backgroundColor;
+			if(clickedCube === initialSel){
+				msgDisplay.textContent = 'Congratulations!';
+				reseedBut.textContent = "New Game";
+				colorChange(clickedCube);
+				h1.style.backgroundColor = clickedCube;
+				
+			} else{
+				this.style.background = "#383636";
+				//new reporting for inc
+				msgDisplay.textContent = 'Sorry, Try Again.';
+			}
+
+		});
+	}
+}
+
+
 
 // function to change all cubes color upon correct guess
 function colorChange(color){

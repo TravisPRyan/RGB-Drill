@@ -2,11 +2,21 @@
 
 body {
 	background-color: #383636;
+	margin: 0;
+	font-family: "Futura";
 }
 
 /*should replace this with coloring span */
 h1 {
 	color: white;
+	text-align: center;
+	background: rgb(226, 113, 60);
+	margin: 0;
+	font-weight: 100;
+	text-transform: uppercase;
+	line-height: 1.1;
+	padding: 20px 0;
+
 }
 /*grid based on 6 divs within another div conatiner*/
 /*cubes are 30% of the container 30% , margins are 1.6% each */
@@ -16,18 +26,36 @@ h1 {
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.66%;
+	border-radius: 50%;
+	transition: background 0.4s; 
 
 }
 
+.rgbIcon {
+	width: 10%;
+	height: auto;
+	float: left;
+
+}
+.rgbIcon2 {
+	width: 10%;
+	height: auto;
+	float: right;
+}
+
+
 /*set margin for top to zero, remaining to auto (which automatically centers)*/
 .divContainer {
-	margin: 0 auto;
+	margin: 20px auto;
 	max-width: 60%;
 }
 
 /*should replace this with coloring span */
 #displayMSG {
 	color: black;
+	display: inline-block;
+	width: 20%;
+
 }
 
 #alertBar {
@@ -38,5 +66,30 @@ h1 {
 
 /*on/off class for button styling easy/hard toggle*/
 .modeSel {
-	background: blue;
+	background: rgb(226, 113, 60);
+	color: white;
+}
+
+#colorSel {
+	font-size: 200%;
+}
+
+button {
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	height: 100%;
+	font-weight: 700;
+	color: rgb(226, 113, 60);
+	font-size: inherit;
+	letter-spacing: 1px;
+	transition: all 0.4s;
+
+
+	
+}
+
+button:hover {
+	color: white;
+	background: rgb(226, 113, 60);
 }

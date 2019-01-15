@@ -38,6 +38,7 @@ easyBut.addEventListener("click", function(){
 hardBut.addEventListener("click", function(){
 	hardBut.classList.add("modeSel");
 	easyBut.classList.remove("modeSel");
+	location.reload(true);
 	numberOfCubes = 9;
 	colorsArr = genRando(numberOfCubes);
 	initialSel = randoColor();
@@ -56,12 +57,14 @@ reseedBut.addEventListener("click", function(){
 	initialSel = randoColor();
 	//change selection to new seeds
 	colorSelect.textContent = initialSel;
+	this.textContent = "Reseed Colors"
+	msgDisplay.textContent = "";
 	//associate new colors to cubes
 	for (var i =0; i < cubes.length; i++ ){
 		cubes[i].style.backgroundColor = colorsArr[i];
 	}
 	//returns header styling to original after press
-	h1.style.backgroundColor = "#383636";
+	h1.style.backgroundColor = "rgb(226, 113, 60)";
 
 });
 
@@ -76,7 +79,7 @@ for(var i = 0; i < cubes.length; i++){
 		//fading for incorrect choices and recoloring all cubes for correct choice
 		clickedCube = this.style.backgroundColor;
 		if(clickedCube === initialSel){
-			msgDisplay.textContent = 'Congratulations, you are Correct!';
+			msgDisplay.textContent = 'Congratulations!';
 			reseedBut.textContent = "New Game";
 			colorChange(clickedCube);
 			h1.style.backgroundColor = clickedCube;

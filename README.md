@@ -1,3 +1,3 @@
 # RGB-Drill
 
-Webpage for drilling/grinding RGB color values
+Webpage for drilling/grinding RGB color values. jQuery/HTML/CSS
